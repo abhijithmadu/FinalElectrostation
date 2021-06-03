@@ -4,7 +4,7 @@ import re
 from typing import ContextManager
 from django import http
 from django.http import HttpResponse
-from django.shortcuts import redirect, render_to_response
+from django.shortcuts import redirect, render
 from django.shortcuts import render,get_object_or_404
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User,auth
