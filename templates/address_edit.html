@@ -1,0 +1,44 @@
+
+{% extends 'first.html' %}
+
+{% block content %}
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        
+        <div class="col-md-7 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Edit Details</h4>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">first Name</label><input type="text" class="form-control"  value="{{useraddressedit.first_name}}" name="first_name"></div>
+                    <div class="col-md-6"><label class="labels">last Name</label><input type="text" class="form-control" value="{{useraddressedit.last_name}}" name="last_name"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control"  value="{{useraddressedit.phone}}" name="phone"></div>
+                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control"  value="{{useraddressedit.email}}" name="email"></div>
+                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" value="{{useraddressedit.address_line1}}" name="address_line1"></div>
+                    <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" value="{{useraddressedit.address_line2}}" name="address_line2"></div>
+                    <div class="col-md-12"><label class="labels">City</label><input type="text" class="form-control"  value="{{useraddressedit.city}}" name="city"></div>
+                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control"  value="{{useraddressedit.state}}" name="state"></div>
+                    <div class="col-md-12"><label class="labels">Country</label><input type="text" class="form-control"  value="{{useraddressedit.country}}" name="country"></div>
+                  
+                    
+                   
+                </div>
+
+                
+                <div class="mt-5 text-center"><input type="submit" class="btn btn-primary" value="Edit Address"></div>
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+    
+
+{% endblock %}

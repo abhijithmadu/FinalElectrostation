@@ -1,0 +1,127 @@
+{% extends 'first.html' %}
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+{% block content %}
+<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+	<article class="card-body">
+	  <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+	  <form method="POST" onsubmit="return validation()">
+		  {% csrf_token %}
+			  <div class="form-row">
+				  <div class="col form-group">
+					  <label>Username</label>
+						<input type="text" class="form-control" name="username" id="user" placeholder="Enter your username">
+						<span id="username" class="text-danger font-weight-bold"></span>
+				  </div> <!-- form-group end.// -->
+				  <!-- form-group end.// -->
+			  </div> <!-- form-row end.// -->
+			  <div class="form-group">
+				  <label>Email</label>
+				  <input type="email" class="form-control" name="email" id="email" placeholder="Enter your password">
+				  <span id="emailval" class="text-danger font-weight-bold"></span>
+				  <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+			  </div> <!-- form-group end.// -->
+			  <div class="form-group">
+				<label>Phone number</label>
+				<input type="number" class="form-control" name="phone" id="phone" placeholder="Enter your phone number">
+				<span id="ph" class="text-danger font-weight-bold"></span>
+				<small class="form-text text-muted">We'll never share your phone number with anyone else.</small>
+			</div> <!-- form-group end.// -->
+			  
+			  
+			  <div class="form-row">
+				  <div class="form-group col-md-6">
+					  <label>Create password</label>
+					  <input class="form-control" type="password" id="password" name="password1">
+
+					  <span id="psw" class="text-danger font-weight-bold"></span>
+				  </div> <!-- form-group end.// --> 
+				  <div class="form-group col-md-6">
+					  <label>Repeat password</label>
+					  <input class="form-control" type="password" id="confirmpassword" name="password2">
+					  <span id="conpsw" class="text-danger font-weight-bold"></span>
+				  </div> <!-- form-group end.// --> 	  
+			  </div>
+			  <div class="form-group">
+				<label>Referral Code</label>
+				<input type="text" class="form-control" name="referal" id="#" placeholder="Enter Refferal code ">
+				<span id="rf" class="text-danger font-weight-bold"></span>
+				<small class="form-text text-muted">Please Enter Your Referrel Code .</small>
+			</div>
+			  <div class="form-group">
+				  <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+			  </div> <!-- form-group// -->      
+			  {{error}}
+				  
+		  </form>
+	  </article><!-- card-body.// -->
+  </div> <!-- card .// -->
+  <p class="text-center mt-4">Have an account? <a href="{% url 'user_login' %}">Log In</a></p>
+  
+  <br><br>
+  <script>
+	function validation(){
+		var user=document.getElementById('user').value;
+		var email=document.getElementById('email').value;
+		var phone=document.getElementById('phone').value;
+		var pass=document.getElementById('password').value;
+		var confirmpassword=document.getElementById('confirmpassword').value;
+		var reg =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+	
+
+
+
+		if(user==""){
+			document.getElementById('username').innerHTML= "Please Fill The Username Field";
+			return false;
+		}
+		else if((user.length < 4) || (user.length >=10)){
+			document.getElementById('username').innerHTML= "Username length between 4 and 10";
+			return false;
+		}
+
+		
+		if(email == ""){
+			document.getElementById('emailval').innerHTML= "Please Fill The email Field";
+			return false;
+		}
+		else if(!email.match(reg)){
+			document.getElementById('emailval').innerHTML= "Please Fill a valid email id";
+			return false;
+		}
+
+
+		if(phone==""){
+			document.getElementById('ph').innerHTML= "Please Fill The phone Field";
+			return false;
+		}
+		else if((phone.length < 10) || (phone.length >10)){
+			document.getElementById('ph').innerHTML= "please enter 10 digit number";
+			return false;
+		}
+		else if(isNaN(phone)){
+			document.getElementById('ph').innerHTML= "please enter mobile number";
+			return false;
+		}
+	
+
+
+		if(pass == ""){
+			document.getElementById('psw').innerHTML= "Please Fill The password Field";
+			return false;
+		}
+		else if((pass.length < 4) || (pass.length >=10)){
+			document.getElementById('psw').innerHTML= "password length between 4 and 10";
+			return false;
+		}
+
+		if(confirmpassword == ""){
+			document.getElementById('conpsw').innerHTML= "Please Fill The password Field";
+			return false;
+		}
+		
+
+	}
+</script>
+  {% endblock %}
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->

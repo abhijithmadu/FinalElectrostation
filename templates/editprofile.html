@@ -1,0 +1,178 @@
+{% extends 'first.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/cropper.min.css'%}">
+<section class="section-conten padding-y bg">
+
+    <div class="container">
+        <div class="row">
+       {% include 'dashboard_sidebar.html' %}
+        <main class="col-md-9">
+            <article class="card">
+            <header class="card-header">
+                <strong class="d-inline-block mr-3">Edit Your Profile</strong>
+               
+            </header>
+            <div class="card-body">
+              
+              <div class="text-right">
+                <img src="{{userprofile.profile_picture.url}}" alt="Profile Picture" width="100" style="border-radius: 50px ;">
+              </div>
+                <div class="row">             
+               <div class="col-md-12">
+              <form action="{% url 'editprofile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>First Name</label>
+                    {{user_form.first_name}}
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Last Name</label>
+                    {{user_form.last_name}}
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>Phone Number</label>
+                    {{user_form.phone}}
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Profile Picture</label>
+                    {{profile_form.profile_picture}}
+                  </div>
+                  <textarea name="pro_img1" id="pro_img1" style="display: none;"></textarea>
+                  <img src="" id="imageview1" style="height: auto;width: 100px;">
+                  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                 <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLongTitle">Crop Image</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+                             <div class="result1"></div>
+                         </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                             </button>
+                             <button type="button" id="btnCrop1" class="btn save1 btn-primary">Save changes
+                             </button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+                  
+              
+ 
+
+                </div>
+                  <div class="form-group ">
+                    <label>Address Line 1</label>
+                    {{profile_form.address_line_1}}
+                  </div>
+                  <div class="form-group ">
+                    <label>Address Line 2</label>
+                    {{profile_form.address_line_2}}
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label>City</label>
+                      {{profile_form.city}}
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label>State</label>
+                      {{profile_form.state}}
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label>Country</label>
+                      {{profile_form.country}}
+                    </div>
+                  </div>
+                  <input type="submit" value="Save" class="btn btn-primary">
+              </form>
+                
+            </div>
+                  
+            </div> <!-- row.// -->
+            </div> <!-- card-body .// -->
+           
+            </article> <!-- order-group.// --> 
+        </main>
+    </div> <!-- row.// -->
+    </div>
+   
+    
+    </section>
+    <script>
+      let result1 = document.querySelector('.result1'),
+          save1 = document.querySelector('.save1'),
+          cropped1 = document.querySelector('.imageview1'),
+          upload1 = document.querySelector('#id_profile_picture'),
+          cropper1 = '';
+  
+      upload1.addEventListener('change', (e) => {
+              var fileName = document.getElementById("id_profile_picture").value;
+              var idxDot = fileName.lastIndexOf(".") + 1;
+              var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+              if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+                  if (e.target.files.length) {
+                      // start file reader
+                      const reader = new FileReader();
+                      reader.onload = (e) => {
+                          if (e.target.result) {
+                              // create new image
+                              $("#exampleModalCenter1").modal("show");
+                              let img1 = document.createElement('img');
+                              img1.id = 'image1';
+                              img1.src = e.target.result
+                              // clean result before
+                              result1.innerHTML = '';
+                              // append new image
+                              result1.appendChild(img1);
+                              // init cropper
+                              cropper1 = new Cropper(img1, {
+                                  aspectRatio: 3 / 4,
+                                  viewMode: 2,
+                              });
+                          }
+                      };
+                      reader.readAsDataURL(e.target.files[0]);
+                  }
+              }
+              else {
+                  swal("this file type is not supported", {
+                      icon: "error",
+                  })
+                  fileName = "";
+                  console.log(fileName)
+              }
+          }
+      );
+  
+      save1.addEventListener('click', (e) => {
+          e.preventDefault();
+          // get result to data uri
+          let imgSrc1 = cropper1.getCroppedCanvas({
+              width: 300,
+              height: 500// img disp value
+          }).toDataURL();
+          $("#exampleModalCenter1").modal("hide");
+          imageview1.src = imgSrc1;
+          $('#pro_img1').val(imgSrc1)
+      });
+  </script>
+
+    
+{% endblock %}

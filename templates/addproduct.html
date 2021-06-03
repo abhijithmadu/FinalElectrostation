@@ -1,0 +1,743 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Modern an Admin Panel Category Flat Bootstarp Resposive Website Template | Basic_tables :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="{% static 'css/bootstrap.min.css' %}" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet"> 
+<!-- jQuery -->
+<!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
+<!----webfonts--->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<!---//webfonts--->  
+<!-- Bootstrap Core JavaScript -->
+
+
+</head>
+<body>
+<div id="wrapper">
+     <!-- Navigation -->
+        <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">ELECTRO STATION</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-nav navbar-right">
+              <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-comments-o"></i><span class="badge">4</span></a> -->
+                    <!-- <ul class="dropdown-menu">
+                  <li class="dropdown-menu-header">
+                    <strong>Messages</strong>
+                    <div class="progress thin">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        <span class="sr-only">40% Complete (success)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="avatar">
+                    <a href="#">
+                      <img src="{% static 'images/1.png' %}" alt=""/>
+                      <div>New message</div>
+                      <small>1 minute ago</small>
+                      <span class="label label-info">NEW</span>
+                    </a>
+                  </li>
+                  <li class="avatar">
+                    <a href="#">
+                      <img src="{% static 'images/2.png' %}" alt=""/>
+                      <div>New message</div>
+                      <small>1 minute ago</small>
+                      <span class="label label-info">NEW</span>
+                    </a>
+                  </li>
+                  <li class="avatar">
+                    <a href="#">
+                      <img src="{% static 'images/3.png' %}" alt=""/>
+                      <div>New message</div>
+                      <small>1 minute ago</small>
+                    </a>
+                  </li>
+                  <li class="avatar">
+                    <a href="#">
+                      <img src="{% static 'images/4.png' %}" alt=""/>
+                      <div>New message</div>
+                      <small>1 minute ago</small>
+                    </a>
+                  </li>
+                  <li class="avatar">
+                    <a href="#">
+                      <img src="{% static 'images/5.png' %}" alt=""/>
+                      <div>New message</div>
+                      <small>1 minute ago</small>
+                    </a>
+                  </li>
+                  <li class="avatar">
+                    <a href="#">
+                      <img src="{% static 'images/pic1.png' %}" alt=""/>
+                      <div>New message</div>
+                      <small>1 minute ago</small>
+                    </a>
+                  </li>
+                  <li class="dropdown-menu-footer text-center">
+                    <a href="#">View all messages</a>
+                  </li>	
+                    </ul> -->
+                  </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown"><img src="{% static 'images/1.png' %}" alt=""/><span class="badge"></span></a>
+                    <ul class="dropdown-menu">
+                  <li class="dropdown-menu-header text-center">
+                    <strong>Account</strong>
+                  </li>
+                  <!-- <li class="m_2"><a href="#"><i class="fa fa-bell-o"></i> Updates <span class="label label-info">42</span></a></li>
+                  <li class="m_2"><a href="#"><i class="fa fa-envelope-o"></i> Messages <span class="label label-success">42</span></a></li>
+                  <li class="m_2"><a href="#"><i class="fa fa-tasks"></i> Tasks <span class="label label-danger">42</span></a></li>
+                  <li><a href="#"><i class="fa fa-comments"></i> Comments <span class="label label-warning">42</span></a></li>
+                  <li class="dropdown-menu-header text-center">
+                    <strong>Settings</strong>
+                  </li>
+                  <li class="m_2"><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                  <li class="m_2"><a href="#"><i class="fa fa-wrench"></i> Settings</a></li>
+                  <li class="m_2"><a href="#"><i class="fa fa-usd"></i> Payments <span class="label label-default">42</span></a></li>
+                  <li class="m_2"><a href="#"><i class="fa fa-file"></i> Projects <span class="label label-primary">42</span></a></li>
+                  <li class="divider"></li>
+                  <li class="m_2"><a href="#"><i class="fa fa-dashboard fa-fw nav_icon"></i> Lock Profile</a></li> -->
+                  <li class="m_2"><a href="{% url 'admin_logout' %}"><i class="fa fa-lock"></i> Logout</a></li>	
+                    </ul>
+                  </li>
+            </ul>
+      <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" value="Search..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search...';}">
+      </form>
+      <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a href="{% url 'admin_panel' %}"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-laptop nav_icon"></i>USER MANAGEMENT<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{% url 'user_details' %}">USER DETAILS</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-indent nav_icon"></i>PRODUCT MANAGEMENT<span class="fa arrow"></span></a>
+                  <ul class="nav nav-second-level">
+                      <li>
+                          <a href="{% url 'admin_product_details' %}">PRODUCT DETAILS</a>
+                      </li>
+                      <!-- <li>
+                          <a href="{% url 'admin/add_product' %}">ADD PRODUCT</a>
+                      </li> -->
+                      
+                      <li>
+                          <a href="{% url 'category_details' %}">CATEGORY DETAILS</a>
+                      </li>
+                      <!-- <li>
+                          <a href="{% url 'add_category' %}">ADD CATEGORY</a>
+                      </li> -->
+                      <li>
+                          <a href="{% url 'variation_details' %}">VARIATION DETAILS</a>
+                      </li>
+                  </ul>
+                  <!-- /.nav-second-level -->
+              </li>
+                <li>
+                    <a href="#"><i class="fa fa-envelope nav_icon"></i>ORDER MANAGEMENT<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                      <li>
+                          <a href="{% url 'orderdetails' %}">Order Details</a>
+                      </li>
+                      <li>
+                        <a href="{% url 'orderproductdetails' %}">Order Product Details</a>
+                      </li>
+                      <li>
+                          <a href="{% url 'salesreport' %}">Sales Report</a>
+                      </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-envelope nav_icon"></i>OFFER MANAGEMENT<span class="fa arrow"></span></a>
+                  <ul class="nav nav-second-level">
+                      <li>
+                          <a href="{% url 'view_product_offer' %}">PRODUCT OFFER DETAILS</a>
+                      </li>
+                      <li>
+                          <a href="{% url 'view_category_offer' %}">CATEGORY OFFER DETAILS</a>
+                      </li>
+                      <!-- <li>
+                          <a href="{% url 'category_offer' %}">ADD CATEGORY OFFER</a>
+                      </li>
+                      <li>
+                          <a href="{% url 'product_offer' %}">ADD PRODUCT OFFER</a>
+                      </li> -->
+                      <li>
+                          <a href="{% url 'view_coupon' %}">COUPON DETAILS</a>
+                      </li>
+                      <!-- <li>
+                          <a href="{% url 'addcoupon' %}">ADD COUPON</a>
+                      </li> -->
+                      
+                      
+                  </ul>
+                 
+              </li>
+                  <!-- <li>
+                      <a href="widgets.html"><i class="fa fa-flask nav_icon"></i>Widgets</a>
+                  </li>
+                   <li>
+                      <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Forms<span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level">
+                          <li>
+                              <a href="forms.html">Basic Forms</a>
+                          </li>
+                          <li>
+                              <a href="validation.html">Validation</a>
+                          </li>
+                      </ul> -->
+                      <!-- /.nav-second-level -->
+                  <!-- </li>
+                  <li>
+                      <a href="#"><i class="fa fa-table nav_icon"></i>Tables<span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level">
+                          <li>
+                              <a href="basic_tables.html">Basic Tables</a>
+                          </li>
+                      </ul> -->
+                      <!-- /.nav-second-level -->
+                  <!-- </li>
+                  <li>
+                      <a href="#"><i class="fa fa-sitemap fa-fw nav_icon"></i>Css<span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level">
+                          <li>
+                              <a href="media.html">Media</a>
+                          </li>
+                          <li>
+                              <a href="login.html">Login</a>
+                          </li>
+                      </ul> -->
+                      <!-- /.nav-second-level -->
+                  </li>
+              </ul>
+          </div>
+          <!-- /.sidebar-collapse -->
+      </div>
+      <!-- /.navbar-static-side -->
+  </nav>
+        <div id="page-wrapper">
+            <div class="col-md-12 graphs " >
+                
+            <link rel="stylesheet" href="{% static '/css/cropper.min.css' %}">
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+            
+            <article class="card-body">
+                <header class="mb-4"><h4 class="card-title">Add Product</h4></header>
+                
+            <form method="POST" action="" enctype="multipart/form-data"  >
+                   {% csrf_token %}
+                   
+                   {{ form|crispy }}                 
+
+                            
+                            <textarea name="pro_img1" id="pro_img1" style="display: none;"></textarea>
+                            <img src="" id="imageview1" style="height: auto;width: 100px;">
+                            <textarea name="pro_img2" id="pro_img2" style="display: none;"></textarea>
+                            <img src="" id="imageview2" style="height: auto;width: 100px;">
+                            <textarea name="pro_img3" id="pro_img3" style="display: none;"></textarea>
+                            <img src="" id="imageview3" style="height: auto;width: 100px;">
+                            <textarea name="pro_img4" id="pro_img4" style="display: none;"></textarea>
+                            <img src="" id="imageview4" style="height: auto;width: 100px;">
+                    
+                           
+                        </div> 
+                        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Crop Image</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="result1"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                            </button>
+                            <button type="button" id="btnCrop1" class="btn save1 btn-primary">Save changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+        {#            modal#}
+        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Crop Image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box-2">
+                            <div style="max-width: 100%;" class="result2"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                        </button>
+                        <button type="button" id="btnCrop2" class="btn save2 btn-primary">Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#            modal#}
+        {#            modal#}
+        <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Crop Image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box-2">
+                            <div style="width:10em;height: 100%" class="result3"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                        </button>
+                        <button type="button" id="btnCrop3" class="btn save3 btn-primary">Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# modal 4 #}
+        <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title" id="exampleModalLongTitle">Crop Image</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+               </div>
+               <div class="modal-body">
+                   <div class="box-2">
+                       <div style="width:10em;height: 100%" class="result4"></div>
+                   </div>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                   </button>
+                   <button type="button" id="btnCrop4" class="btn save4 btn-primary">Save changes
+                   </button>
+               </div>
+           </div>
+       </div>
+   </div>    
+
+                                                
+
+
+                    
+                      
+                        <div class="form-group">
+                            <br>
+                            <input type="submit" value="Submit">
+                            <!-- <input type="submit" class="btn btn-info" value="add product">  -->
+                        </div> <!-- form-group// -->
+
+                       
+                        
+            </form>
+
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    
+
+    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    </section>
+</div>
+
+<script>
+    let result1 = document.querySelector('.result1'),
+        save1 = document.querySelector('.save1'),
+        cropped1 = document.querySelector('.imageview1'),
+        upload1 = document.querySelector('#id_image1'),
+        cropper1 = '';
+
+    upload1.addEventListener('change', (e) => {
+            var fileName = document.getElementById("id_image1").value;
+            var idxDot = fileName.lastIndexOf(".") + 1;
+            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+            if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+                if (e.target.files.length) {
+                    // start file reader
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        if (e.target.result) {
+                            // create new image
+                            $("#exampleModalCenter1").modal("show");
+                            let img1 = document.createElement('img');
+                            img1.id = 'image1';
+                            img1.src = e.target.result
+                            // clean result before
+                            result1.innerHTML = '';
+                            // append new image
+                            result1.appendChild(img1);
+                            // init cropper
+                            cropper1 = new Cropper(img1, {
+                                aspectRatio: 16 / 9,
+                                viewMode: 2,
+                            });
+                        }
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            }
+            else {
+                swal("this file type is not supported", {
+                    icon: "error",
+                })
+                fileName = "";
+                console.log(fileName)
+            }
+        }
+    );
+
+    save1.addEventListener('click', (e) => {
+        e.preventDefault();
+        // get result to data uri
+        let imgSrc1 = cropper1.getCroppedCanvas({
+            width: 300,
+            height: 500// img disp value
+        }).toDataURL();
+        $("#exampleModalCenter1").modal("hide");
+        imageview1.src = imgSrc1;
+        $('#pro_img1').val(imgSrc1)
+    });
+</script>
+<script>
+    let result2 = document.querySelector('.result2'),
+        save2 = document.querySelector('.save2'),
+        cropped2 = document.querySelector('.imageview2'),
+        upload2 = document.querySelector('#id_image2'),
+        cropper2 = '';
+
+    upload2.addEventListener('change', (e) => {
+            var fileName = document.getElementById("id_image2").value;
+            var idxDot = fileName.lastIndexOf(".") + 1;
+            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+            if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+                if (e.target.files.length) {
+                    // start file reader
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        if (e.target.result) {
+                            // create new image
+                            $("#exampleModalCenter2").modal("show");
+                            let img2 = document.createElement('img');
+                            img2.id = 'image2';
+                            img2.src = e.target.result;
+                            // clean result before
+                            result2.innerHTML = '';
+                            // append new image
+                            result2.appendChild(img2);
+                            // init cropper
+                            cropper2 = new Cropper(img2, {
+                                aspectRatio: 16 / 9,
+                                viewMode: 2,
+                            });
+                        }
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            }
+            else {
+                swal("this file type is not supported", {
+                    icon: "error",
+                })
+                fileName = "";
+                console.log(fileName)
+            }
+        }
+    );
+
+    save2.addEventListener('click', (e) => {
+        e.preventDefault();
+        // get result to data uri
+        let imgSrc2 = cropper2.getCroppedCanvas({
+            width: 300,
+            height: 500// img disp value
+        }).toDataURL();
+        $("#exampleModalCenter2").modal("hide");
+        imageview2.src = imgSrc2;
+        $('#pro_img2').val(imgSrc2)
+    });
+</script>
+<script>
+  let result3 = document.querySelector('.result3'),
+      save3 = document.querySelector('.save3'),
+      cropped3 = document.querySelector('.imageview3'),
+      upload3 = document.querySelector('#id_image3'),
+      cropper3 = '';
+
+  upload3.addEventListener('change', (e) => {
+      var fileName = document.getElementById("id_image3").value;
+      var idxDot = fileName.lastIndexOf(".") + 1;
+      var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+      if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+          if (e.target.files.length) {
+              // start file reader
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                  if (e.target.result) {
+                      // create new image
+                      $("#exampleModalCenter3").modal("show");
+                      let img3 = document.createElement('img');
+                      img3.id = 'image3';
+                      img3.src = e.target.result
+                      // clean result before
+                      result3.innerHTML = '';
+                      // append new image
+                      result3.appendChild(img3);
+                      // init cropper
+                      cropper3 = new Cropper(img3, {
+                          aspectRatio: 16 / 9,
+                          viewMode: 2,
+                      });
+                  }
+              };
+              reader.readAsDataURL(e.target.files[0]);
+          }
+      } else {
+          swal("this file type is not supported", {
+              icon: "error",
+          })
+          fileName = "";
+          console.log(fileName)
+      }
+  });
+
+  save3.addEventListener('click', (e) => {
+      e.preventDefault();
+      // get result to data uri
+      let imgSrc3 = cropper3.getCroppedCanvas({
+          width: 300,
+          height: 500// img disp value
+      }).toDataURL();
+      $("#exampleModalCenter3").modal("hide");
+      imageview3.src = imgSrc3;
+      $('#pro_img3').val(imgSrc3)
+  });
+</script>
+
+<script>
+let result4 = document.querySelector('.result4'),
+    save4 = document.querySelector('.save4'),
+    cropped4 = document.querySelector('.imageview4'),
+    upload4 = document.querySelector('#id_image4'),
+    cropper4 = '';
+
+upload4.addEventListener('change', (e) => {
+    var fileName = document.getElementById("id_image4").value;
+    var idxDot = fileName.lastIndexOf(".") + 1;
+    var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+    if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+        if (e.target.files.length) {
+            // start file reader
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                if (e.target.result) {
+                    // create new image
+                    $("#exampleModalCenter4").modal("show");
+                    let img4 = document.createElement('img');
+                    img4.id = 'image4';
+                    img4.src = e.target.result
+                    // clean result before
+                    result4.innerHTML = '';
+                    // append new image
+                    result4.appendChild(img4);
+                    // init cropper
+                    cropper4 = new Cropper(img4, {
+                        aspectRatio: 16 / 9,
+                        viewMode: 2,
+                    });
+                }
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    } else {
+        swal("this file type is not supported", {
+            icon: "error",
+        })
+        fileName = "";
+        console.log(fileName)
+    }
+});
+
+save4.addEventListener('click', (e) => {
+    e.preventDefault();
+    // get result to data uri
+    let imgSrc4 = cropper4.getCroppedCanvas({
+        width: 300,
+        height: 500// img disp value
+    }).toDataURL();
+    $("#exampleModalCenter4").modal("hide");
+    imageview4.src = imgSrc4;
+    $('#pro_img4').val(imgSrc4)
+});
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
+  
+  
+  
+
+
+            <!-- <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <canvas id="canvas"></canvas>
+       Image  : <img id="image" src="#"  width="100px" height="100px" />
+       <br>
+       Image 1: <img id="image1" src="#" width="100px" height="100px" />
+       <br>
+       Image 2: <img id="image2" src="#" width="100px" height="100px" />
+       <br>
+       Image 3: <img id="image3" src="#" width="100px" height="100px" />
+       <br>
+            <input type="submit">
+            </form>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          
+          reader.onload = function(e) {
+            $('#image').attr('src', e.target.result);
+          }
+          
+          reader.readAsDataURL(input.files[0]); 
+          
+        }
+      }
+      
+      $("#id_image").change(function() {
+        readURL(this);
+      });
+
+      function readURL4(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          
+          reader.onload = function(e) {
+            $('#image1').attr('src', e.target.result);
+          }
+          
+          reader.readAsDataURL(input.files[0]); 
+        }
+      }
+      
+      $("#id_image1").change(function() {
+        readURL4(this);
+      });
+
+      function readURL2(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          
+          reader.onload = function(e) {
+            $('#image2').attr('src', e.target.result);
+          }
+          
+          reader.readAsDataURL(input.files[0]); 
+        }
+      }
+      
+      $("#id_image2").change(function() {
+        readURL2(this);
+      });
+
+      function readURL3(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          
+          reader.onload = function(e) {
+            $('#image3').attr('src', e.target.result);
+            var $image = $('#image3');
+
+            
+          }
+          
+          reader.readAsDataURL(input.files[0]); 
+        }
+      }
+      
+      $("#id_image3").change(function() {
+        readURL3(this);
+      });
+</script> -->
+
+   </div>
+      </div>
+      <!-- /#page-wrapper -->
+   </div>
+    <!-- /#wrapper -->
+<!-- Nav CSS -->
+<link href="{% static 'css/custom.css' %}" rel="stylesheet">
+
+<!-- Metis Menu Plugin JavaScript -->
+<scripts src="{% static 'js/metisMenu.min.js' %}"></scripts>
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
+
+

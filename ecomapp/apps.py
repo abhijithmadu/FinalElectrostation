@@ -1,0 +1,8 @@
+from django.apps import AppConfig
+
+
+class EcomappConfig(AppConfig):
+    name = 'ecomapp'
+
+    def ready(self):
+        import ecomapp.signals

@@ -1,0 +1,341 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{%static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{%static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{%static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{%static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{%static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+<link href="{%static 'css/customs.css' %}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- custom javascript -->
+<script src="{%static 'js/script.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
+</head>
+<body>
+
+
+<header class="section-header">
+<nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTop4">
+    <ul class="navbar-nav mr-auto">
+    	<li class="nav-item dropdown">
+		 	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Language </a>
+		    <ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">English</a></li>
+				<li><a class="dropdown-item" href="#">Arabic</a></li>
+				<li><a class="dropdown-item" href="#">Russian </a></li>
+		    </ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> USD </a>
+			<ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">EUR</a></li>
+				<li><a class="dropdown-item" href="#">AED</a></li>
+				<li><a class="dropdown-item" href="#">RUBL </a></li>
+		    </ul>
+		</li>
+    </ul>
+  </div> <!-- navbar-collapse .// -->
+</div> <!-- container //  -->
+</nav>
+
+<section class="header-main border-bottom">
+	<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a class="navbar-brand" href="{% url 'index' %}"><b>ELECTRO STATION</b></a>
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+				<i class="fa fa-bars"></i> All category 
+			</button>
+			<div class="dropdown-menu">
+				{% for category in links %}
+				<a class="dropdown-item" href="{{ category.get_url }}">{{category.name}}</a>
+				{% endfor %}
+				
+			</div>
+		</div>  <!-- category-wrap.// -->
+	</div> <!-- col.// -->
+	<a href="{% url 'store' %}" class="btn btn-outline-primary">Store</a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form action="#" class="search">
+			<div class="input-group w-100">
+			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
+			    
+			    <div class="input-group-append">
+			      <button class="btn btn-primary" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+					<div class="widget-header">
+						
+						<div> 
+							{% if request.user.is_authenticated %}
+							<a href="{% url 'dashboard' %}">{{request.user}}</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'user_logout' %}"> Logout</a>
+							{% else %}
+							<a href="{% url 'user_login' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'user_registration' %}"> Register</a>
+							{% endif %}
+
+						</div>
+					</div>
+					<a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">{{ cart_count }}</span>
+					</a>
+				</div> <!-- widgets-wrap.// -->
+			</div> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- container.// -->
+</section> <!-- header-main .// -->
+
+
+</header> <!-- section-header.// -->
+
+
+
+<section class="section-content padding-y bg">
+<div class="container">
+
+<!-- ============================ COMPONENT 1 ================================= -->
+<div class="card">
+	<div class="row no-gutters">
+		<aside class="col-md-6">
+			<div class="ml-5">
+			<div class="show" href="{{product.image1.url}}">
+                <img src="{{product.image1.url}}" id="show-img"  style="margin: 10px; border: solid 1px;">
+              </div>
+			</div>
+         
+              <div  class="small-img" >
+              
+                <div class="small-container">
+                 <div id="small-img-roll">
+                   <img src="{{product.image1.url}}" class="show-small-img" alt="">
+                   <img src="{{product.image2.url}}" class="show-small-img" alt="">
+                   <img src="{{product.image3.url}}" class="show-small-img" alt="">
+                   
+                 </div>
+                </div>
+               
+              </div>
+
+              <link rel="stylesheet" href="{% static '/css/style1.css' %}">
+              <script src="{% static '/js/zoom-image.js'%}"></script>
+                <script src="{% static '/js/main.js' %}"></script>
+
+		</aside>
+		<!-- <main class="col-md-6 border-left"> -->
+		
+<form action="{% url 'add_cart' product.id %}" method="POST">
+	{% csrf_token %}
+<article class="content-body">
+
+<h2 class="title">{{product.name}}</h2>
+<div class="rating-star">
+	<span>
+		<i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<span> {{product.countReview}} Reviews</span>
+
+	</span> 
+
+
+	<div class="mb-3"> 
+		{% if product.offer_price %}
+		<var class="price h4">${{product.product_price}}  </var> <s style="color:red">${{product.price}}</s> <b>{{product.offer_percentage}} %offf</b>
+		{% else %}
+		<var class="price h4">${{product.price}}</var> 
+		{% endif %}
+	</div> 
+
+<p>{{product.description|slice:200}}</p>
+
+
+<hr>
+	<div class="row">
+		<div class="item-option-select">
+			<h6>Choose Color</h6>
+			<select name="color" class="form-control" required>
+				<option value="" disabled selected>Select </option>
+				{% for i in product.variation_set.color %}
+				<option value="{{i.variation_value | lower}}" >{{i.variation_value | capfirst }}</option>
+				{% endfor %}
+			</select>
+			
+		</div>
+	</div> <!-- row.// -->
+	<div class="row">
+		<div class="item-option-select">
+			<h6>Select Size</h6>
+			<select name="size"  class="form-control">
+				<option value="" disabled selected>Select</option>
+				{% for i in product.variation_set.sizes %}
+				<option value="{{i.variation_value | lower}}" >{{i.variation_value | capfirst }}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div> <!-- row.// -->
+	<hr>
+	{% if product.stock <= 0 %}
+	<h5 style="color:red;">OUT OF STOCK</h5>
+	{% else %}
+	<button type="submit" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
+	{% endif %}
+</article> <!-- product-info-aside .// -->
+</form>
+		<!-- </main>  -->
+	</div> <!-- row.// -->
+	
+	
+</div> <!-- card.// -->
+<!-- ============================ COMPONENT 1 END .// ================================= -->
+
+<br>
+
+<div class="row">
+	<div class="col-md-9">
+
+
+<form action="{% url 'submit_review' product.id %}" method="POST">
+{% csrf_token %}
+<h5>Write Your Review</h5>
+{{product.averageReview}}
+<div>
+	
+	<label>How do you rate this product ?</label>
+	<br>
+	<div class="rate">
+		<input type="radio" name="rating" id="rating10" value="5" required ><label for="rating10" title="5"></label>
+		<input type="radio" name="rating" id="rating9" value="4.5" required ><label for="rating9" title="4.5" class="half"></label>
+		<input type="radio" name="rating" id="rating8" value="4" required ><label for="rating8" title="4" ></label>
+		<input type="radio" name="rating" id="rating7" value="3.5" required ><label for="rating7" title="3.5" class="half"></label>
+		<input type="radio" name="rating" id="rating6" value="3" required ><label for="rating6" title="3"></label>
+		<input type="radio" name="rating" id="rating5" value="2.5" required ><label for="rating5" title="2.5" class="half"></label>
+		<input type="radio" name="rating" id="rating4" value="2" required ><label for="rating4" title="2"></label>
+		<input type="radio" name="rating" id="rating3" value="1.5" required ><label for="rating3" title="1.5" class="half"></label>
+		<input type="radio" name="rating" id="rating2" value="1" required ><label for="rating2" title="1"></label>
+		<input type="radio" name="rating" id="rating1" value="0.5" required ><label for="rating1" title="0.5" class="half"></label>
+
+	</div>
+	<br>
+
+
+	Review title:
+	<input type="text" class="form-control" name="subject" >
+	<br>
+	Review:
+	<textarea name="review" rows="4" class="form-control"></textarea>
+	<br>
+	{% if user.is_authenticated %}
+	<input type="submit" value="Submit Review" class="btn btn-primary">
+	{% else %}
+	<p>You must be logged in to post a review. <span><a href="{% url 'user_login' %}">Login now</a></span> </p>
+	{% endif %}
+</div>
+</form>
+<br>
+
+<header class="section-heading">
+	<h3>Customer Reviews </h3> 
+	<div class="rating-star">
+	<span>
+		<i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o{% endif %}" aria-hidden="true"></i>
+		<span> {{product.countReview}} Reviews</span>
+
+	</span> 
+</div>
+	
+	</header>
+
+{% for review in reviews %}
+
+<article class="box mb-3">
+<div class="icontext w-100">
+	<!-- <img src="./images/avatars/avatar1.jpg" class="img-xs icon rounded-circle"> -->
+	<div class="text">
+		<span class="date text-muted float-md-right">{{review.updated_at}} </span>  
+		<h6 class="mb-1">{{review.user.username}} </h6>
+		<div class="rating-star">
+		<span>
+			<i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o{% endif %}" aria-hidden="true"></i>
+			<i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o{% endif %}" aria-hidden="true"></i>
+			<i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o{% endif %}" aria-hidden="true"></i>
+			<i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o{% endif %}" aria-hidden="true"></i>
+			<i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o{% endif %}" aria-hidden="true"></i>
+		</span>
+	</div>
+		
+	</div>
+</div> 
+<div class="mt-3">
+	<h6>{{review.subject}}</h6>
+	<p>
+		{{review.review}}
+	</p>	
+</div>
+</article>
+
+{% endfor %}
+
+
+
+</div>  
+</div>
+
+</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+</body>
+</html>
