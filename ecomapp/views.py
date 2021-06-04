@@ -185,6 +185,7 @@ def admin_category_delete(request,id):
         #     return redirect('admin_login')  
     else:
         return redirect('admin_login')  
+        
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_product(request):
